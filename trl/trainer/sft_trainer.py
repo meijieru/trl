@@ -594,7 +594,7 @@ class SFTTrainer(Trainer):
                         prompt_ids = processed_prompt["input_ids"]
                         prompt_completion_ids = processed["input_ids"]
                         if not prompt_completion_ids[: len(prompt_ids)] == prompt_ids:
-                            warnings.warn(
+                            raise RuntimeError(
                                 "Mismatch between tokenized prompt and the start of tokenized prompt+completion. "
                                 "This may be due to unexpected tokenizer behavior, whitespace issues, or special "
                                 "token handling. Verify that the tokenizer is processing text consistently."
